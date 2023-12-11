@@ -31,7 +31,6 @@ public class Employee {
 
         return Objects.hash(firstName, lastName);
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

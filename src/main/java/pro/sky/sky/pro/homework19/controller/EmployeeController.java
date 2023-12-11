@@ -13,6 +13,7 @@ import java.util.Collection;
 @RequestMapping("/employees")
 public class EmployeeController {
     public final EmployeeService employeeService;
+
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -20,28 +21,28 @@ public class EmployeeController {
 
     @GetMapping(path = "/add")
     public Employee add(@RequestParam("name") String fistName,
-                                     @RequestParam("surname") String lastName) {
+                        @RequestParam("surname") String lastName) {
 
-                return employeeService.add(fistName, lastName);
+        return employeeService.add(fistName, lastName);
     }
+
     @GetMapping(path = "/remove")
     public Employee remove(@RequestParam("name") String fistName,
-                        @RequestParam("surname") String lastName) {
+                           @RequestParam("surname") String lastName) {
 
         return employeeService.remove(fistName, lastName);
     }
+
     @GetMapping(path = "/find")
     public Employee find(@RequestParam("name") String fistName,
-                        @RequestParam("surname") String lastName) {
+                         @RequestParam("surname") String lastName) {
 
         return employeeService.find(fistName, lastName);
     }
+
     @GetMapping
     public Collection<Employee> findAll() {
         return employeeService.findAll();
     }
-
-
-
 
 }
