@@ -9,17 +9,17 @@ import pro.sky.sky.pro.homework19.model.Employee;
 import java.util.*;
 
 @Service
-public class EmployeeService{
+public class EmployeeService {
 
-private static final int MAX_EPLOYEE = 10;
-    private final Map<String,Employee> employees = new HashMap<>();
+    private static final int MAX_EPLOYEE = 10;
+    private final Map<String, Employee> employees = new HashMap<>();
 
 
     public Employee add(String firstName, String lastName) {
         if (employees.size() == MAX_EPLOYEE) {
             throw new EmployeeStorageIsFullException();
         }
-        String kay = buildKay (firstName, lastName);
+        String kay = buildKay(firstName, lastName);
         if (employees.containsKey(kay)) {
             throw new EmployeeAlreadyAddedException();
         }
@@ -28,7 +28,7 @@ private static final int MAX_EPLOYEE = 10;
     }
 
     public Employee remove(String firstName, String lastName) {
-        String kay = buildKay (firstName, lastName);
+        String kay = buildKay(firstName, lastName);
         Employee employee = employees.remove(kay);
         if (employee == null) {
             throw new EmployeeNotFoundException();
@@ -38,8 +38,9 @@ private static final int MAX_EPLOYEE = 10;
 
 
     public Employee find(String firstName, String lastName) {
-        String kay = buildKay (firstName, lastName);
-        Employee employee = employees.get(kay);;
+        String kay = buildKay(firstName, lastName);
+        Employee employee = employees.get(kay);
+        ;
         if (employee == null) {
             throw new EmployeeNotFoundException();
         }
@@ -49,8 +50,9 @@ private static final int MAX_EPLOYEE = 10;
     public Collection<Employee> findAll() {
         return Collections.unmodifiableCollection(employees.values());
     }
-    private String buildKay (String name, String surname) {
-            return name + surname;
+
+    private String buildKay(String name, String surname) {
+        return name + surname;
     }
 }
 
